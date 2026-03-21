@@ -1,0 +1,32 @@
+[package]
+name = "nargo-parser"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo parser component"
+keywords = ["parser", "parsing", "nargo"]
+categories = ["parsing", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-parser"
+documentation = "https://docs.rs/nargo-parser"
+
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+nargo-script-analyzer.workspace = true
+oak-core.workspace = true
+oak-vue.workspace = true
+oak-json.workspace = true
+oak-toml = { workspace = true, features = ["lsp"] }
+oak-typescript.workspace = true
+oak-css.workspace = true
+oak-scss.workspace = true
+oak-stylus.workspace = true
+oak-tailwind.workspace = true
+triomphe.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+itertools.workspace = true
+once_cell.workspace = true

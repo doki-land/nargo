@@ -1,0 +1,62 @@
+[general]
+title = "Nargo Document 示例文档"
+author = "Nargo Team"
+description = "这是一个 Nargo Document 使用示例项目的文档"
+
+[output]
+directory = "./dist"
+format = "html"
+
+[server]
+port = 3000
+host = "127.0.0.1"
+
+[generator.html]
+template = "default"
+theme = "default"
+
+[plugins]
+enabled = ["katex", "mermaid", "shiki", "container"]
+
+[plugins.container]
+default_icons = true
+
+[theme]
+name = "default"
+
+[theme.nav]
+items = [
+    { text = "首页", link = "/" },
+    { text = "指南", link = "/guide/" },
+    { text = "API", link = "/api/" }
+]
+
+[theme.sidebar]
+groups = [
+    { 
+        text = "入门指南",
+        items = [
+            { text = "快速开始", link = "/guide/quick-start" },
+            { text = "安装", link = "/guide/installation" }
+        ]
+    },
+    {
+        text = "核心功能",
+        items = [
+            { text = "配置", link = "/features/configuration" },
+            { text = "插件", link = "/features/plugins" }
+        ]
+    }
+]
+
+[theme.footer]
+enabled = true
+message = "Powered by Nargo Document"
+copyright = "© 2024 Nargo Team"
+
+[theme.locales]
+default = "zh-CN"
+available = [
+    { code = "zh-CN", label = "简体中文" },
+    { code = "en-US", label = "English" }
+]

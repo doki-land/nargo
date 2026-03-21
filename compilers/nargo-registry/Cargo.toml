@@ -1,0 +1,38 @@
+[package]
+name = "nargo-registry"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo registry management"
+keywords = ["registry", "package-management", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-registry"
+documentation = "https://docs.rs/nargo-registry"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+sha2.workspace = true
+hex.workspace = true
+gix.workspace = true
+wae-request.workspace = true
+url.workspace = true
+semver.workspace = true
+futures.workspace = true
+tokio-util.workspace = true
+flate2.workspace = true
+tar.workspace = true
+tempfile.workspace = true
+walkdir.workspace = true
+ring = "0.17.8"
+base64 = "0.22.1"
+dirs = "5.0.1"
+
+nargo-types.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

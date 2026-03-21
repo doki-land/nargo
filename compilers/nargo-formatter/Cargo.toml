@@ -1,0 +1,22 @@
+[package]
+name = "nargo-formatter"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo formatter tool"
+keywords = ["formatter", "format", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-formatter"
+documentation = "https://docs.rs/nargo-formatter"
+
+[dependencies]
+nargo-parser = { workspace = true }
+nargo-types = { workspace = true }
+nargo-ir = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+oak-json = { workspace = true }
+oak-core = { workspace = true }

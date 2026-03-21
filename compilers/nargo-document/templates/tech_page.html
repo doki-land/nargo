@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            line-height: 1.6;
+            color: #00ff88;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            min-height: 100vh;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: rgba(10, 10, 30, 0.95);
+            border-right: 2px solid #00ff88;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        .sidebar::before {
+            content: '[SYSTEM]';
+            display: block;
+            color: #00ff88;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #00ff88;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            padding-bottom: 15px;
+        }
+        
+        .sidebar-title::before {
+            content: '> ';
+            color: #ff00ff;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-nav a {
+            color: #00cccc;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 0;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+        }
+        
+        .sidebar-nav a::before {
+            content: '$ ';
+            color: #ff00ff;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .sidebar-nav a:hover::before,
+        .sidebar-nav a.active::before {
+            opacity: 1;
+        }
+        
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            border-left-color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        
+        .sidebar-nav .group-title {
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #ff00ff;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(255, 0, 255, 0.3);
+        }
+        
+        .sidebar-nav .group-title::before {
+            content: '// ';
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 300px;
+            padding: 40px;
+            max-width: 1000px;
+        }
+        
+        .navbar {
+            background: rgba(10, 10, 30, 0.9);
+            border-bottom: 2px solid #00ff88;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 300px;
+            right: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.15);
+        }
+        
+        .navbar::before {
+            content: 'CONNECTION ESTABLISHED';
+            position: absolute;
+            top: 5px;
+            right: 20px;
+            font-size: 0.6rem;
+            color: #00ff88;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #00cccc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .content-wrapper {
+            margin-top: 100px;
+            background: rgba(10, 10, 30, 0.85);
+            padding: 50px;
+            border-radius: 0;
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.1);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            position: relative;
+        }
+        
+        .content-wrapper::before {
+            content: 'DOCUMENT://';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #0a0a1a;
+            padding: 0 10px;
+            color: #ff00ff;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 28px;
+            margin-bottom: 18px;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            padding-bottom: 0.3em;
+            border-bottom: 2px solid rgba(0, 255, 136, 0.3);
+            margin-bottom: 25px;
+        }
+        
+        h1::before {
+            content: '# ';
+            color: #ff00ff;
+        }
+        
+        h2 {
+            font-size: 1.7rem;
+            padding-bottom: 0.3em;
+            border-bottom: 1px dashed rgba(0, 255, 136, 0.2);
+        }
+        
+        h2::before {
+            content: '## ';
+            color: #ff00ff;
+            font-size: 0.9em;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+        }
+        
+        h3::before {
+            content: '### ';
+            color: #ff00ff;
+            font-size: 0.9em;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            color: #aaffcc;
+        }
+        
+        p::first-letter {
+            font-weight: bold;
+        }
+        
+        code {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 0.3em 0.6em;
+            border-radius: 0;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        pre {
+            background: rgba(0, 0, 0, 0.5);
+            color: #00ff88;
+            padding: 20px;
+            border-radius: 0;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 2px solid rgba(0, 255, 136, 0.4);
+            position: relative;
+        }
+        
+        pre::before {
+            content: 'CODE_BLOCK';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #0a0a1a;
+            padding: 0 10px;
+            color: #ff00ff;
+            font-size: 0.7rem;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            border: none;
+        }
+        
+        ul, ol {
+            margin-bottom: 18px;
+            padding-left: 2em;
+            color: #aaffcc;
+        }
+        
+        li {
+            margin-bottom: 6px;
+        }
+        
+        li::marker {
+            color: #ff00ff;
+        }
+        
+        a {
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        a::after {
+            content: '→';
+            margin-left: 3px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        
+        a:hover::after {
+            opacity: 1;
+        }
+        
+        blockquote {
+            border-left: 4px solid #ff00ff;
+            padding-left: 20px;
+            margin-left: 0;
+            color: #ccccff;
+            font-style: italic;
+            background: rgba(255, 0, 255, 0.05);
+            padding: 20px 25px;
+            position: relative;
+        }
+        
+        blockquote::before {
+            content: '"';
+            font-size: 3rem;
+            color: #ff00ff;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(0, 255, 136, 0.3);
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .footer::before {
+            content: 'END_OF_TRANSMISSION';
+            display: block;
+            margin-bottom: 10px;
+            color: #ff00ff;
+            font-size: 0.7rem;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #00ff88;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-title">{{ site_title }}</div>
+            <nav>
+                <ul class="sidebar-nav">
+                    {% for group in sidebar_groups %}
+                    {% if !group.items.is_empty() %}
+                    <li class="group-title">{{ group.text }}</li>
+                    {% for item in group.items %}
+                    <li>
+                        <a href="{{ item.link }}"{% if item.link == current_path %} class="active"{% endif %}>{{ item.text }}</a>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    {% for item in nav_items %}
+                    <li><a href="{{ item.link }}">{{ item.text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            
+            <div class="content-wrapper">
+                {{ content|safe }}
+                
+                {% if has_footer %}
+                <footer class="footer">
+                    {% if has_footer_message %}
+                    <p>{{ footer_message }}</p>
+                    {% endif %}
+                    {% if has_footer_copyright %}
+                    <p>{{ footer_copyright }}</p>
+                    {% endif %}
+                </footer>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

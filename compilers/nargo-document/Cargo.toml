@@ -1,0 +1,36 @@
+[package]
+name = "nargo-document"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo documentation tool"
+keywords = ["documentation", "doc", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-document"
+documentation = "https://docs.rs/nargo-document"
+
+[dependencies]
+nargo-bundler = { workspace = true }
+nargo-parser = { workspace = true }
+nargo-types = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+serde = { workspace = true }
+oak-json = { workspace = true }
+oak-toml = { workspace = true }
+clap = { workspace = true }
+mime = { workspace = true }
+notify = { workspace = true }
+rayon = { workspace = true }
+warp = { workspace = true }
+regex = { workspace = true }
+lazy_static = { workspace = true }
+oak-core = { workspace = true }
+oak-markdown = { workspace = true }
+walkdir = { workspace = true }
+console = { workspace = true }
+pulldown-cmark = "0.9.3"
+
+[dev-dependencies]
+tempfile = { workspace = true }

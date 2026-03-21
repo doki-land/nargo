@@ -1,0 +1,17 @@
+[package]
+name = "nargo-hydrate"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo hydration support"
+keywords = ["hydrate", "web", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-hydrate"
+documentation = "https://docs.rs/nargo-hydrate"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+nargo-bundler.workspace = true

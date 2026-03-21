@@ -1,0 +1,10 @@
+{
+  "name": "@nargo/nargo-win32-x64",
+  "version": "0.1.0",
+  "description": "NAPI binding for Nargo (Windows x64)",
+  "os": ["win32"],
+  "cpu": ["x64"],
+  "main": "nargo.win32-x64-msvc.node",
+  "files": ["nargo.win32-x64-msvc.node"],
+  "license": "MIT"
+}

@@ -1,0 +1,18 @@
+[package]
+name = "nargo-types"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo common types and error handling"
+keywords = ["types", "errors", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-types"
+documentation = "https://docs.rs/nargo-types"
+
+[dependencies]
+regex.workspace = true
+dialoguer.workspace = true
+oak-json.workspace = true
+serde = { workspace = true }

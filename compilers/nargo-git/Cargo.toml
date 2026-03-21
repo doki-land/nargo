@@ -1,0 +1,20 @@
+[package]
+name = "nargo-git"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo git operations" 
+keywords = ["git", "version-control", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-git"
+documentation = "https://docs.rs/nargo-git"
+
+[dependencies]
+tracing.workspace = true
+nargo-types.workspace = true
+gix.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

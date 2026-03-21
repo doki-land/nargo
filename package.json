@@ -1,11 +1,19 @@
 {
-    "private": true,
-    "scripts": {
-        "build": "cargo build --release",
-        "test": "cargo test --release",
-        "fmt": "cargo fmt --all",
-        "p": "git push && git push --tags --prune",
-        "reset": "git reset Head~ --soft",
-        "u": "cargo upgrade --workspace"
-    }
+  "name": "@nargo/workspace",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.18.3",
+  "scripts": {
+    "check:struct": "npx ts-node scripts/check-structures.ts",
+    "check:ci": "node scripts/check.mjs",
+    "check": "node scripts/check.mjs",
+    "regenerate": "$env:REGENERATE_TESTS=1; cargo test --release --all-features",
+    "test": "cargo test --release",
+    "fmt": "npx biome format --write . && cargo fmt --all",
+    "u": "cargo upgrade --pinned",
+    "p": "cargo workspace publish --resume",
+    "placeholder": "node scripts/ci/publish-placeholder.mjs",
+    "placeholder:publish": "node scripts/ci/publish-placeholder.mjs publish",
+    "placeholder:trust": "node scripts/ci/publish-placeholder.mjs trust"
+  }
 }

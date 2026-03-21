@@ -1,0 +1,23 @@
+[package]
+name = "nargo-config"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo configuration management"
+keywords = ["config", "configuration", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-config"
+documentation = "https://docs.rs/nargo-config"
+
+[dependencies]
+nargo-types.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+oak-yaml.workspace = true
+oak-toml.workspace = true
+oak-json.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full"] }

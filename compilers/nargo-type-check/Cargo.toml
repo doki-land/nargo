@@ -1,0 +1,32 @@
+[package]
+name = "nargo-type-check"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo type checker"
+keywords = ["type-check", "type-system", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-type-check"
+documentation = "https://docs.rs/nargo-type-check"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-parser.workspace = true
+nargo-ir.workspace = true
+nargo-script-analyzer.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+async-trait.workspace = true
+walkdir.workspace = true
+regex.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+console.workspace = true
+glob.workspace = true
+rayon.workspace = true
+
+
+[dev-dependencies]
+tempfile.workspace = true

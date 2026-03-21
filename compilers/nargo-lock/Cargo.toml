@@ -1,0 +1,24 @@
+[package]
+name = "nargo-lock"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo lock file management"
+keywords = ["lock", "dependency-management", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-lock"
+documentation = "https://docs.rs/nargo-lock"
+
+[dependencies]
+serde = { workspace = true }
+oak-json = { workspace = true }
+oak-toml = { workspace = true }
+tracing = { workspace = true }
+sha2 = { workspace = true }
+hex = { workspace = true }
+nargo-types = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

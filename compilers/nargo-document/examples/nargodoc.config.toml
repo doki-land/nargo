@@ -1,0 +1,127 @@
+# nargo-document 配置文件示例
+
+[general]
+title = "nargo-document 示例文档"
+author = "Nargo Team"
+description = "这是一个使用 nargo-document 的完整示例"
+
+[output]
+directory = "./output"
+format = "html"
+
+[server]
+port = 8080
+host = "127.0.0.1"
+
+[generator.html]
+template = "default"
+
+[generator.pdf]
+margin = [20, 20, 20, 20]
+font = "Helvetica"
+font_size = 12
+
+[plugins]
+katex = true
+mermaid = true
+shiki = true
+container = true
+
+[plugins.container]
+types = ["tip", "warning", "danger", "info"]
+
+[markdown]
+theme = "default"
+line_numbers = true
+highlight_theme = "github-dark"
+
+[build]
+clean = true
+minify = true
+sourcemap = false
+
+[theme_config]
+site_title = "nargo-document 示例"
+site_description = "探索 nargo-document 的所有功能"
+
+[theme_config.nav]
+[[theme_config.nav.items]]
+text = "首页"
+link = "/"
+
+[[theme_config.nav.items]]
+text = "指南"
+link = "/guide/"
+
+[[theme_config.nav.items]]
+text = "API"
+link = "/api/"
+
+[[theme_config.nav.items]]
+text = "GitHub"
+link = "https://github.com"
+
+[theme_config.sidebar]
+[[theme_config.sidebar.groups]]
+title = "快速开始"
+items = [
+    { text = "安装", link = "/guide/install.md" },
+    { text = "配置", link = "/guide/config.md" },
+    { text = "第一个文档", link = "/guide/first-doc.md" }
+]
+
+[[theme_config.sidebar.groups]]
+title = "插件"
+items = [
+    { text = "KaTeX 数学公式", link = "/plugins/katex.md" },
+    { text = "Mermaid 图表", link = "/plugins/mermaid.md" },
+    { text = "代码高亮", link = "/plugins/code-highlight.md" },
+    { text = "自定义容器", link = "/plugins/container.md" }
+]
+
+[[theme_config.sidebar.groups]]
+title = "主题"
+items = [
+    { text = "默认主题", link = "/themes/default.md" },
+    { text = "自定义主题", link = "/themes/custom.md" }
+]
+
+[theme_config.footer]
+message = "© 2024 Nargo Team"
+copyright = "All rights reserved"
+
+[[theme_config.footer.links]]
+text = "GitHub"
+link = "https://github.com"
+
+[[theme_config.footer.links]]
+text = "Twitter"
+link = "https://twitter.com"
+
+[[theme_config.footer.links]]
+text = "Discord"
+link = "https://discord.com"
+
+[theme_config.locales]
+default = "zh-CN"
+
+[[theme_config.locales.available]]
+code = "zh-CN"
+name = "简体中文"
+
+[[theme_config.locales.available]]
+code = "en-US"
+name = "English"
+
+[[theme_config.locales.available]]
+code = "ja-JP"
+name = "日本語"
+
+[social]
+[[social.links]]
+platform = "github"
+url = "https://github.com/nargo"
+
+[[social.links]]
+platform = "twitter"
+url = "https://twitter.com/nargo"

@@ -1,0 +1,27 @@
+[package]
+name = "nargo-audit"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo audit tool"
+keywords = ["audit", "security", "nargo"]
+categories = ["security", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-audit"
+documentation = "https://docs.rs/nargo-audit"
+
+[dependencies]
+nargo-types = { workspace = true }
+nargo-parser = { workspace = true }
+nargo-linter = { workspace = true }
+serde = { workspace = true }
+oak-json = { workspace = true }
+async-trait = { workspace = true }
+walkdir = { workspace = true }
+regex = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

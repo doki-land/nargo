@@ -1,0 +1,33 @@
+[package]
+name = "nargo-lsp"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo language server protocol implementation"
+keywords = ["lsp", "language-server", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-lsp"
+documentation = "https://docs.rs/nargo-lsp"
+
+[[bin]]
+name = "nargo-lsp"
+path = "src/main.rs"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+nargo-parser.workspace = true
+nargo-compiler.workspace = true
+nargo-script-analyzer.workspace = true
+oak-core.workspace = true
+oak-lsp.workspace = true
+oak-vfs.workspace = true
+dashmap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+url.workspace = true
+tokio = { workspace = true, features = ["rt", "macros", "sync", "io-util", "time", "io-std"] }
+futures.workspace = true
+clap = { version = "4.3.19", features = ["derive"] }

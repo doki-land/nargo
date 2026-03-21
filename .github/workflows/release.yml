@@ -1,0 +1,135 @@
+name: CI & Release
+
+on:
+  push:
+    branches: [ master, dev ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ master, dev ]
+
+jobs:
+  check:
+    name: Check (Lint & Fmt)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Format check
+        run: cargo fmt --all -- --check
+      - name: Clippy check
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+  build-rs:
+    name: Build Rust (${{ matrix.target }})
+    needs: [check]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            pkg_dir: nargo-linux-x64
+            bin_name: nargo
+          - os: ubuntu-latest
+            target: aarch64-unknown-linux-gnu
+            pkg_dir: nargo-linux-arm64
+            bin_name: nargo
+          - os: macos-latest
+            target: x86_64-apple-darwin
+            pkg_dir: nargo-darwin-x64
+            bin_name: nargo
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            pkg_dir: nargo-darwin-arm64
+            bin_name: nargo
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            pkg_dir: nargo-win32-x64
+            bin_name: nargo.exe
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.target }}
+
+      - name: Install cross (for linux arm64)
+        if: matrix.target == 'aarch64-unknown-linux-gnu'
+        run: cargo install cross
+
+      - name: Build binary
+        run: |
+          if [ "${{ matrix.target }}" = "aarch64-unknown-linux-gnu" ]; then
+            cross build --release --target ${{ matrix.target }} -p nargo
+          else
+            cargo build --release --target ${{ matrix.target }} -p nargo
+          fi
+        shell: bash
+
+      - name: Copy binary to npm package
+        run: |
+          mkdir -p runtimes/${{ matrix.pkg_dir }}/bin
+          cp target/${{ matrix.target }}/release/${{ matrix.bin_name }} runtimes/${{ matrix.pkg_dir }}/bin/
+        shell: bash
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.pkg_dir }}
+          path: runtimes/${{ matrix.pkg_dir }}
+
+  test:
+    name: Tests
+    needs: [build-rs]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Build
+        run: cargo build --all-targets --all-features
+      - name: Run tests
+        run: cargo test --all-targets --all-features
+
+  release:
+    name: Release (Publish to NPM & JSR)
+    needs: [test]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download Rust artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: npm-packages
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Build TS & Publish (Dry Run)
+        run: |
+          npm install -g typescript
+          node scripts/publish.js ts --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          JSR_URL: https://jsr.io

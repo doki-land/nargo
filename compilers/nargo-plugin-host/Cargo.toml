@@ -1,0 +1,22 @@
+[package]
+name = "nargo-plugin-host"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo plugin system"
+keywords = ["plugin", "extensions", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-plugin"
+documentation = "https://docs.rs/nargo-plugin"
+
+[dependencies]
+tracing.workspace = true
+nargo-types.workspace = true
+nargo-config.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full"] }

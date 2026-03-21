@@ -1,0 +1,10 @@
+{
+  "name": "@nargo/nargo-darwin-x64",
+  "version": "0.1.0",
+  "description": "NAPI binding for Nargo (macOS x64)",
+  "os": ["darwin"],
+  "cpu": ["x64"],
+  "main": "nargo.darwin-x64.node",
+  "files": ["nargo.darwin-x64.node"],
+  "license": "MIT"
+}

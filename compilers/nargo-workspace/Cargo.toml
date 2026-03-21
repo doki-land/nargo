@@ -1,0 +1,24 @@
+[package]
+name = "nargo-workspace"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo workspace management"
+keywords = ["workspace", "management", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-workspace"
+documentation = "https://docs.rs/nargo-workspace"
+
+[dependencies]
+nargo-config = { workspace = true }
+nargo-types = { workspace = true }
+serde = { workspace = true }
+oak-json = { workspace = true }
+oak-toml = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

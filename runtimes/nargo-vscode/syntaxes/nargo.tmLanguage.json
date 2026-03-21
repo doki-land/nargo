@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Nargo",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#variables"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.nargo",
+          "match": "//.*$",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.nargo"
+            }
+          }
+        },
+        {
+          "name": "comment.block.nargo",
+          "begin": "/\*",
+          "end": "\*/",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.nargo"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.nargo",
+          "match": "\\b(if|else|for|while|return|export|import|let|const|var|function|class|interface|type|enum|module|namespace|async|await|try|catch|finally|throw)\\b"
+        },
+        {
+          "name": "keyword.operator.nargo",
+          "match": "(\+|\-|\*|\/|\%|\=|\==|\!=|\<|\>|\<=|\>=|\&&|\|\||\!|\~|\^|\&|\|)"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.nargo",
+          "begin": "\"",
+          "end": "\"",
+          "escapes": "\\."
+        },
+        {
+          "name": "string.quoted.single.nargo",
+          "begin": "'",
+          "end": "'",
+          "escapes": "\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.nargo",
+          "match": "\\b\d+(\.\d+)?([eE][+-]?\d+)?\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.nargo",
+          "match": "\\b[a-zA-Z_]\\w*\\s*\\("
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.nargo",
+          "match": "\\b[a-zA-Z_]\\w*\\b"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.nargo"
+}

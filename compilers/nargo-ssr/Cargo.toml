@@ -1,0 +1,22 @@
+[package]
+name = "nargo-ssr"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo server-side rendering"
+keywords = ["ssr", "server-side-rendering", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-ssr"
+documentation = "https://docs.rs/nargo-ssr"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+nargo-bundler.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true

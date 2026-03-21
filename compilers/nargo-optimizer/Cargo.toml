@@ -1,0 +1,17 @@
+[package]
+name = "nargo-optimizer"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo optimizer component"
+keywords = ["optimizer", "optimization", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-optimizer"
+documentation = "https://docs.rs/nargo-optimizer"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+nargo-transformer.workspace = true

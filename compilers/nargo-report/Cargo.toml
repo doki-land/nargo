@@ -1,0 +1,22 @@
+[package]
+name = "nargo-report"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo report generation"
+keywords = ["report", "documentation", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-report"
+documentation = "https://docs.rs/nargo-report"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+oak-handlebars = { workspace = true }
+nargo-types = { workspace = true }
+nargo-linter = { workspace = true }
+nargo-audit = { workspace = true }
+nargo-coverage = { workspace = true }
+nargo-template = { workspace = true }

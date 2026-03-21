@@ -1,0 +1,20 @@
+[package]
+name = "nargo-basic"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Nargo 基础使用示例"
+publish = false
+
+[dependencies]
+nargo-types = { workspace = true }
+nargo-config = { workspace = true }
+tracing = { workspace = true }
+
+[[bin]]
+name = "nargo-basic"
+path = "src/main.rs"
+
+[dev-dependencies]
+tempfile = { workspace = true }

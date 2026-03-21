@@ -1,0 +1,23 @@
+[package]
+name = "nargo-linter"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo linter tool"
+keywords = ["linter", "lint", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-linter"
+documentation = "https://docs.rs/nargo-linter"
+
+[dependencies]
+nargo-parser = { workspace = true }
+nargo-types = { workspace = true }
+nargo-ir = { workspace = true }
+tracing.workspace = true
+serde.workspace = true
+async-trait.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["full"] }

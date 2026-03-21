@@ -1,0 +1,22 @@
+[package]
+name = "nargo-sdk"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo SDK generator"
+keywords = ["sdk", "generator", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-sdk"
+documentation = "https://docs.rs/nargo-sdk"
+
+[dependencies]
+nargo-metadata.workspace = true
+nargo-types.workspace = true
+oak-json.workspace = true
+semver = "1.0.20"
+
+[dev-dependencies]
+tempfile = { workspace = true }
+nargo-ir.workspace = true

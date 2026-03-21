@@ -1,0 +1,24 @@
+[package]
+name = "nargo-scaffolder"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo scaffolding tool"
+keywords = ["scaffolder", "generator", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-scaffolder"
+documentation = "https://docs.rs/nargo-scaffolder"
+
+[features]
+default = []
+interactive = ["dialoguer"]
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+console.workspace = true
+dialoguer = { workspace = true, optional = true }
+
+nargo-types.workspace = true

@@ -1,0 +1,27 @@
+[package]
+name = "nargo-release"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo release management"
+keywords = ["release", "versioning", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-release"
+documentation = "https://docs.rs/nargo-release"
+
+[dependencies]
+nargo-workspace = { workspace = true }
+nargo-types = { workspace = true }
+nargo-config = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+gix = { workspace = true }
+tracing = { workspace = true }
+rayon = { workspace = true }
+petgraph = { workspace = true }
+semver = { workspace = true, features = ["serde"] }
+
+[dev-dependencies]
+tempfile = { workspace = true }

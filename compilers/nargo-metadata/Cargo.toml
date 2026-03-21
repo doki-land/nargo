@@ -1,0 +1,18 @@
+[package]
+name = "nargo-metadata"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo metadata management"
+keywords = ["metadata", "api", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-metadata"
+documentation = "https://docs.rs/nargo-metadata"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+regex.workspace = true
+serde.workspace = true

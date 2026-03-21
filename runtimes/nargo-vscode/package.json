@@ -1,0 +1,81 @@
+{
+  "name": "nargo-vscode",
+  "displayName": "Nargo",
+  "description": "Nargo language support for Visual Studio Code",
+  "version": "0.1.0",
+  "publisher": "nargo",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:nargo",
+    "onCommand:nargo.initialize"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "nargo",
+        "aliases": ["Nargo", "nargo"],
+        "extensions": [".nargo", ".oak"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "nargo",
+        "scopeName": "source.nargo",
+        "path": "./syntaxes/nargo.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "nargo.initialize",
+        "title": "Initialize Nargo"
+      },
+      {
+        "command": "nargo.build",
+        "title": "Build Project"
+      },
+      {
+        "command": "nargo.run",
+        "title": "Run Project"
+      },
+      {
+        "command": "nargo.test",
+        "title": "Run Tests"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "nargo.build",
+        "key": "ctrl+shift+b",
+        "when": "editorLangId == nargo"
+      },
+      {
+        "command": "nargo.run",
+        "key": "ctrl+shift+r",
+        "when": "editorLangId == nargo"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}

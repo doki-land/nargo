@@ -1,0 +1,16 @@
+[package]
+name = "nargo-ir"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo intermediate representation"
+keywords = ["ir", "intermediate", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-ir"
+documentation = "https://docs.rs/nargo-ir"
+
+[dependencies]
+nargo-types.workspace = true
+serde = { workspace = true }

@@ -1,18 +1,62 @@
 [package]
-name = "sub_projects"
-publish = false
-version = "0.0.0"
-authors = ["Aster <192607617@qq.com>"]
-description = "..."
-repository = "https://github.com/oovm/sub_projects"
-documentation = "https://docs.rs/sub_projects"
-readme = "Readme.md"
-license = "MPL-2.0"
-edition = "2021"
+name = "nargo"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo compiler and toolchain"
+keywords = ["compiler", "toolchain", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo"
+documentation = "https://docs.rs/nargo"
 
 [dependencies]
+nargo-types.workspace = true
+nargo-config.workspace = true
+nargo-plugin.workspace = true
 
-[dev-dependencies]
+nargo-registry.workspace = true
+nargo-resolver.workspace = true
+nargo-cache.workspace = true
+nargo-lock.workspace = true
+nargo-workspace.workspace = true
 
-[features]
-default = []
+nargo-parser.workspace = true
+nargo-compiler.workspace = true
+nargo-bundler.workspace = true
+nargo-ir.workspace = true
+
+nargo-server.workspace = true
+nargo-linter.workspace = true
+nargo-formatter.workspace = true
+nargo-coverage.workspace = true
+nargo-audit.workspace = true
+
+nargo-lsp.workspace = true
+nargo-mcp.workspace = true
+nargo-hooks.workspace = true
+nargo-release.workspace = true
+nargo-scaffolder = { workspace = true, features = ["interactive"] }
+nargo-bridge.workspace = true
+nargo-report.workspace = true
+nargo-git.workspace = true
+
+oak-toml.workspace = true
+walkdir.workspace = true
+num_cpus.workspace = true
+clap.workspace = true
+tokio.workspace = true
+color-eyre.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+console.workspace = true
+chrono.workspace = true
+futures.workspace = true
+flate2.workspace = true
+tar.workspace = true
+sha2.workspace = true
+hex.workspace = true
+dialoguer.workspace = true

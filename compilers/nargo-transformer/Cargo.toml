@@ -1,0 +1,19 @@
+[package]
+name = "nargo-transformer"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo transformer component"
+keywords = ["transformer", "ir", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-transformer"
+documentation = "https://docs.rs/nargo-transformer"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+serde = { workspace = true }
+serde_json = { workspace = true }
+rayon.workspace = true

@@ -1,0 +1,19 @@
+[package]
+name = "nargo-coverage"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo coverage tool"
+keywords = ["coverage", "testing", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-coverage"
+documentation = "https://docs.rs/nargo-coverage"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-config.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true

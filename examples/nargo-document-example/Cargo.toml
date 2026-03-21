@@ -1,0 +1,22 @@
+[package]
+name = "nargo-document-example"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Nargo Document 使用示例"
+publish = false
+
+[dependencies]
+nargo-document = { workspace = true }
+nargo-types = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+[[bin]]
+name = "nargo-document-example"
+path = "src/main.rs"
+
+[dev-dependencies]
+tempfile = { workspace = true }

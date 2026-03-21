@@ -1,0 +1,16 @@
+[package]
+name = "nargo-bridge"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo bridge component"
+keywords = ["bridge", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-bridge"
+documentation = "https://docs.rs/nargo-bridge"
+
+[dependencies]
+nargo-types = { workspace = true }
+tracing.workspace = true

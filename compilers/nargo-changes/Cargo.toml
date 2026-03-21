@@ -1,0 +1,28 @@
+[package]
+name = "nargo-changes"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo changes management component"
+keywords = ["changes", "changeset", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-changes"
+documentation = "https://docs.rs/nargo-changes"
+
+[dependencies]
+nargo-types.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+walkdir.workspace = true
+oak-toml.workspace = true
+filetime.workspace = true
+hex.workspace = true
+sha2.workspace = true
+glob.workspace = true
+chrono = { workspace = true, features = ["serde"] }
+
+[dev-dependencies]
+tempfile.workspace = true

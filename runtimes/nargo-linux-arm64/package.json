@@ -1,0 +1,10 @@
+{
+  "name": "@nargo/nargo-linux-arm64",
+  "version": "0.1.0",
+  "description": "NAPI binding for Nargo (Linux arm64)",
+  "os": ["linux"],
+  "cpu": ["arm64"],
+  "main": "nargo.linux-arm64-gnu.node",
+  "files": ["nargo.linux-arm64-gnu.node"],
+  "license": "MIT"
+}

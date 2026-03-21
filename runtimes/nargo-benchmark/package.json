@@ -1,0 +1,51 @@
+{
+  "name": "@nargo/benchmark",
+  "version": "0.1.0",
+  "description": "Nargo benchmarking module for TypeScript",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./runner": {
+      "import": "./dist/runner.js",
+      "types": "./dist/runner.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node dist/runner.js"
+  },
+  "peerDependencies": {
+    "tsx": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "tsx": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.13",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "benchmark",
+    "performance",
+    "testing",
+    "nargo"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nargo/nargo",
+    "directory": "runtimes/nargo-benchmark"
+  }
+}

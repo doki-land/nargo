@@ -1,0 +1,36 @@
+{
+  "name": "@nargo/nargo",
+  "version": "0.1.0",
+  "description": "Nargo CLI — `npm i -g @nargo/nargo` (command: nargo). Libraries live in @nargo/*.",
+  "type": "commonjs",
+  "main": "index.js",
+  "bin": {
+    "nargo": "bin/nargo"
+  },
+  "files": [
+    "bin",
+    "index.js"
+  ],
+  "optionalDependencies": {
+    "@nargo/nargo-darwin-arm64": "workspace:*",
+    "@nargo/nargo-darwin-x64": "workspace:*",
+    "@nargo/nargo-linux-arm64": "workspace:*",
+    "@nargo/nargo-linux-x64": "workspace:*",
+    "@nargo/nargo-win32-x64": "workspace:*"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "nargo",
+    "pnpm",
+    "monorepo",
+    "bump",
+    "trust",
+    "release"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

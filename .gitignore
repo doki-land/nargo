@@ -1,14 +1,26 @@
-# OS
-.DS_Store/
-thumbs.db
-time-travel.*
-
 # IDE
-.vscode/
-.vs/
 .idea/
-*.iml
 
 # Rust
 target/
 Cargo.lock
+.cargo/config.toml
+
+# Node
+node_modules/
+dist/
+*.log
+package-lock.json
+
+# Nargo single workspace cache (never per-package)
+.cache/
+
+# Placeholder / local secrets (never commit)
+.env
+.env.*
+!.env.placeholder.local.example
+.env.placeholder.local
+scripts/.placeholder-npm-cache.json
+
+# Agent
+.trae

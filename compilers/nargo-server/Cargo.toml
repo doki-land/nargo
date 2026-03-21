@@ -1,0 +1,26 @@
+[package]
+name = "nargo-server"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo development server"
+keywords = ["server", "development", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-server"
+documentation = "https://docs.rs/nargo-server"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-compiler.workspace = true
+nargo-bundler.workspace = true
+nargo-parser.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+notify.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+mime_guess.workspace = true
+walkdir.workspace = true
+warp.workspace = true

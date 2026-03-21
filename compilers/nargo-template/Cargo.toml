@@ -1,0 +1,33 @@
+[package]
+name = "nargo-template"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo template engine management"
+keywords = ["template", "engine", "nargo"]
+categories = ["development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-template"
+documentation = "https://docs.rs/nargo-template"
+
+[dependencies]
+nargo-types.workspace = true
+serde = "1.0.200"
+walkdir.workspace = true
+async-trait.workspace = true
+
+oak-core = { workspace = true }
+oak-dejavu = { workspace = true, optional = true }
+oak-handlebars = { workspace = true, optional = true }
+oak-jinja = { workspace = true, optional = true }
+oak-liquid = { workspace = true, optional = true }
+oak-ejs = { workspace = true, optional = true }
+
+[features]
+default = []
+dejavu = ["dep:oak-dejavu"]
+handlebars = ["dep:oak-handlebars"]
+jinja = ["dep:oak-jinja"]
+liquid = ["dep:oak-liquid"]
+ejs = ["dep:oak-ejs"]

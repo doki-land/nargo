@@ -1,0 +1,30 @@
+[package]
+name = "nargo-compiler"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo compiler core"
+keywords = ["compiler", "core", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-compiler"
+documentation = "https://docs.rs/nargo-compiler"
+[dependencies]
+nargo-types.workspace = true
+nargo-parser.workspace = true
+nargo-ir.workspace = true
+nargo-optimizer.workspace = true
+nargo-ssr.workspace = true
+nargo-hydrate.workspace = true
+nargo-script-analyzer.workspace = true
+nargo-transformer.workspace = true
+nargo-bundler.workspace = true
+num_cpus.workspace = true
+
+[dev-dependencies]
+criterion = "0.8.2"
+
+[[bench]]
+name = "compiler_benchmarks"
+harness = false

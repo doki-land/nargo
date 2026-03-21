@@ -1,0 +1,58 @@
+{
+  "name": "@nargo/testing",
+  "version": "0.1.0",
+  "description": "Vitest-compatible test runtime for Nargo",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "nargo-testing": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./runner": {
+      "import": "./dist/runner.js",
+      "types": "./dist/runner.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node dist/cli.js run"
+  },
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "peerDependencies": {
+    "tsx": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "tsx": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.13",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "test",
+    "testing",
+    "vitest",
+    "jest",
+    "nargo"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nargo/nargo",
+    "directory": "packages/testing"
+  }
+}

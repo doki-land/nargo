@@ -1,0 +1,24 @@
+[package]
+name = "nargo-bundler"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo bundler component"
+keywords = ["bundler", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-bundler"
+documentation = "https://docs.rs/nargo-bundler"
+
+[dependencies]
+nargo-types.workspace = true
+nargo-ir.workspace = true
+nargo-style-processor.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+rayon.workspace = true
+oak-core.workspace = true
+oak-source-map.workspace = true
+ws = { workspace = true }
+regex = "1.10.3"

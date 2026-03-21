@@ -1,0 +1,20 @@
+pub mod base;
+pub mod call_count;
+pub mod constant_folding;
+pub mod dead_code_elimination;
+pub mod example_plugin;
+pub mod i18n;
+pub mod scoped_css;
+pub mod static_hoisting;
+pub mod style_analysis;
+pub mod tree_shaking;
+
+pub use base::BaseTransform;
+pub use call_count::CallCountPass;
+pub use constant_folding::ConstantFoldingPass;
+pub use dead_code_elimination::DeadCodeEliminationPass;
+pub use i18n::I18nPass;
+pub use scoped_css::ScopedCssPass;
+pub use static_hoisting::StaticHoistingPass;
+pub use style_analysis::StyleAnalysisPass;
+pub use tree_shaking::TreeShakingPass;

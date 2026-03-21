@@ -1,0 +1,10 @@
+{
+  "name": "@nargo/nargo",
+  "version": "0.1.0",
+  "exports": {
+    ".": "./index.js"
+  },
+  "publish": {
+    "include": ["index.js", "package.json", "bin/nargo"]
+  }
+}

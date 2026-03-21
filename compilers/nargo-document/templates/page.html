@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-right: 1px solid #e5e5e5;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+        
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar-nav a {
+            color: #666;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: #f0f0f0;
+            color: #007acc;
+        }
+        
+        .sidebar-nav .group-title {
+            font-weight: 600;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 0 40px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 280px;
+            right: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: #007acc;
+        }
+        
+        .content-wrapper {
+            margin-top: 80px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+        }
+        
+        p {
+            margin-bottom: 16px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin-bottom: 4px;
+        }
+        
+        a {
+            color: #007acc;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        blockquote {
+            border-left: 4px solid #007acc;
+            padding-left: 16px;
+            margin-left: 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-title">{{ site_title }}</div>
+            <nav>
+                <ul class="sidebar-nav">
+                    {% for group in sidebar_groups %}
+                    {% if !group.items.is_empty() %}
+                    <li class="group-title">{{ group.text }}</li>
+                    {% for item in group.items %}
+                    <li>
+                        <a href="{{ item.link }}"{% if item.link == current_path %} class="active"{% endif %}>{{ item.text }}</a>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    {% for item in nav_items %}
+                    <li><a href="{{ item.link }}">{{ item.text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            
+            <div class="content-wrapper">
+                {{ content|safe }}
+                
+                {% if has_footer %}
+                <footer class="footer">
+                    {% if has_footer_message %}
+                    <p>{{ footer_message }}</p>
+                    {% endif %}
+                    {% if has_footer_copyright %}
+                    <p>{{ footer_copyright }}</p>
+                    {% endif %}
+                </footer>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

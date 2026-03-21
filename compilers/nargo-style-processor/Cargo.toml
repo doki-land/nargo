@@ -1,0 +1,23 @@
+[package]
+name = "nargo-style-processor"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+homepage.workspace = true
+description = "Nargo style processor"
+keywords = ["style", "css", "nargo"]
+categories = ["compilers", "development-tools"]
+repository = "https://github.com/doki-land/nargo/compilers/nargo-style-processor"
+documentation = "https://docs.rs/nargo-style-processor"
+
+
+[dependencies]
+nargo-types = { workspace = true }
+serde = { workspace = true }
+oak-core = { workspace = true }
+oak-css = { workspace = true }  # CSS 处理器
+oak-sass = { workspace = true }  # Sass 处理器
+oak-scss = { workspace = true }  # SCSS 处理器
+oak-stylus = { workspace = true }  # Stylus 处理器
+notify = { workspace = true }  # 文件变化监听库
